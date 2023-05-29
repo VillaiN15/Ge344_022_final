@@ -1,0 +1,244 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pretzel</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+ integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+ crossorigin="" />
+ 
+ <!-- W3 CSS template -->
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+ 
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+ <style>
+ #mapid {
+ height: 800px;
+ }
+ </style>
+</head>
+<body>
+    <div class="w3-row">
+        <div id="mapid" class="w3-half"></div>
+        <div id="content" class="w3-half">
+        <table class="w3-table w3-striped">
+        <tr>
+        <th>ชื่อแหล่งร้านอาหาร</th>
+        <th>ระดับความนิยม</th>
+        </tr>
+        <tr>
+        <td>ร้านอาหารA</td>
+        <td>อาหาร</td>
+        <td>A</td>
+        </tr>
+        </table>
+        </div>
+        </div>
+<script>
+var map = L.map("mapid").setView([17.53899785034393, 100.86130992069421], 8);
+ 
+ var osm = L.tileLayer(
+ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+ ).addTo(map);
+ var gsat = L.tileLayer(
+ "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+ ).addTo(map);
+ 
+ var baseMaps = {
+ OSM: osm,
+ GoogleSat: gsat,
+ };
+ 
+//add data
+var tourpoint= {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "Great Harbour International Buffet",
+        "ระดับความนิยม": 9
+      },
+      "geometry": {
+        "coordinates": [
+          100.50985800000052,
+          13.726484844831873
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "เสวย ท่ามหาราช",
+        "ระดับความนิยม": 10
+      },
+      "geometry": {
+        "coordinates": [
+          100.48867699999732,
+          13.755346842265013
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "LukKaithong",
+        "ระดับความนิยม": 9
+      },
+      "geometry": {
+        "coordinates": [
+          100.5098481666551,
+          13.726507819019659
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "Oishi Grand",
+        "ระดับความนิยม": 10
+      },
+      "geometry": {
+        "coordinates": [
+          100.53403099999821,
+          13.746147264623346
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "Chocolate Ville",
+        "ระดับความนิยม": 8
+      },
+      "geometry": {
+        "coordinates": [
+          100.66387000000026,
+          13.811401000000757
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "ลูกจันทร์ by เสน่ห์จันทร์",
+        "ระดับความนิยม": 8
+      },
+      "geometry": {
+        "coordinates": [
+          100.5515242711644,
+          13.839445417373526
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "โจ๊กปรินซ์ บางรัก",
+        "ระดับความนิยม": 8
+      },
+      "geometry": {
+        "coordinates": [
+          100.53274699999861,
+          13.700649847126016
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "สามล้อ Samlor",
+        "ระดับความนิยม": 9
+      },
+      "geometry": {
+        "coordinates": [
+          100.55625727116308,
+          13.865979999999212
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "หน่องริมคลอง",
+        "ระดับความนิยม": 10
+      },
+      "geometry": {
+        "coordinates": [
+          100.58864927116127,
+          13.741281000001592
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ชื่อแหล่งร้านอาหาร": "Ongtong Khaosoi",
+        "ระดับความนิยม": 8
+      },
+      "geometry": {
+        "coordinates": [
+          100.54456727116695,
+          13.781126160036138
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
+
+//interaction by mouseover
+  var tourLayer = L.geoJSON(tourpoint, {
+ pointToLayer: function (feature, latlng) {
+ return L.marker(latlng).bindPopup(feature.properties.ชื่อแหล่งร้านอาหาร);
+ },
+ onEachFeature: function (feature, layer) {
+ layer.on("mouseover", function () {
+ document
+ .getElementById(feature.properties.ชื่อแหล่งร้านอาหาร)
+ .classList.add("w3-red");
+ });
+ 
+ layer.on("mouseout", function () {
+ document
+ .getElementById(feature.properties.ชื่อแหล่งร้านอาหาร)
+ .classList.remove("w3-red");
+ });
+ },
+ }).addTo(map);
+
+var cont = "";
+ cont += "<table class='w3-table w3-striped'>";
+ cont += "<tr>";
+ cont += "<th>ชื่อแหล่งร้านอาหาร</th>";
+ cont += "<th>ระดับความนิยม</th>";
+ cont += "</tr>";
+ for (let i in tourpoint.features) {
+ cont += "<tr id=" + tourpoint.features[i].properties.ชื่อแหล่งร้านอาหาร + ">";
+ cont += "<td>" + tourpoint.features[i].properties.ชื่อแหล่งร้านอาหาร + "</td>";
+ cont += "<td>" + tourpoint.features[i].properties.ระดับความนิยม + "</td>";
+ cont += "</tr>";
+ }
+ cont += "</table>";
+ console.log(cont);
+ document.getElementById("content").innerHTML = cont;
+
+
+</script>
+
+</body>
+</html>
